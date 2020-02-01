@@ -11,6 +11,7 @@ public class FlockAgent : MonoBehaviour {
     Collider agentCollider;
     public Collider AgentCollider { get { return agentCollider; } }
 
+    public bool scatterCheck = false;
     public Vector3 steerVelocity = Vector3.zero;
     public LayerMask agentLayer;
 

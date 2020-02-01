@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/SteeredCohesion")]
 public class SteeredCohessionBehaviour : FilteredFlockBehaviour {
 
-
-   
     public float agentSmoothTime = 0.5f;
 
     public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)

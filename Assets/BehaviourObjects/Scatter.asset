@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6020b4a566e19042b12026b3c5800ca, type: 3}
-  m_Name: filterlayercheck
+  m_Script: {fileID: 11500000, guid: d940d784ea8c2534ca05417af1489bfe, type: 3}
+  m_Name: Scatter
   m_EditorClassIdentifier: 
+  filter: {fileID: 11400000, guid: 4c85d47da7bfe884d83391ba4c580205, type: 2}
+  agentSmoothTime: 0.5
