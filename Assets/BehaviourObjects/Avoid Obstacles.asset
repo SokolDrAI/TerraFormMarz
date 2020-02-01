@@ -3,12 +3,14 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67562dc2c0e4c5e4d8960eb5feec33aa, type: 3}
-  m_Name: Avoidance Behaviour
+  m_Name: Avoid Obstacles
   m_EditorClassIdentifier: 
-  filter: {fileID: 11400000, guid: 4c85d47da7bfe884d83391ba4c580205, type: 2}
+  filter: {fileID: 11400000, guid: 64954a32cc12f82499ee7b98106e7f94, type: 2}
+  avoidRadiusWeight: 2

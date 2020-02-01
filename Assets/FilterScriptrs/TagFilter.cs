@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Filter/Obstacle")]
-public class AvoidObstcale : ContextFilter
+public class TagFilter : ContextFilter
 {
-
+    public List<string> tags;
 
     public override List<TransformAgent> Filter(FlockAgent agent, List<TransformAgent> original)
     {
@@ -13,7 +13,7 @@ public class AvoidObstcale : ContextFilter
 
         foreach (TransformAgent item in original)
         {
-            if (item.transform.tag.Equals("Obstacle"))
+            if (tags.Contains(item.transform.tag))
             {
                 filtered.Add(item);
             }

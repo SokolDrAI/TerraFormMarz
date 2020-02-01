@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6020b4a566e19042b12026b3c5800ca, type: 3}
-  m_Name: filterlayercheck
+  m_Name: TagFilter
   m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
+  tags:
+  - Obstacle
