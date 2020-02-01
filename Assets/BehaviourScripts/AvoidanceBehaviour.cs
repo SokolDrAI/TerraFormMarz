@@ -6,7 +6,7 @@ using UnityEngine;
 public class AvoidanceBehaviour : FilteredFlockBehaviour
 {
 
-    public override Vector3 CalcualteMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
         //If no neighbours, return no adjustment
         if (context.Count == 0)
@@ -17,13 +17,13 @@ public class AvoidanceBehaviour : FilteredFlockBehaviour
         //Add all points together and average
         Vector3 avoidanecMove = Vector3.zero;
         int nAvoid = 0;
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
-        foreach (Transform item in context)
+        List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+        foreach (TransformAgent item in context)
         {
-            if(Vector3.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+            if(Vector3.SqrMagnitude(item.transform.position - agent.transform.position) < flock.SquareAvoidanceRadius)
             {
                 nAvoid++;
-                avoidanecMove += agent.transform.position - item.position;
+                avoidanecMove += agent.transform.position - item.transform.position;
             }
         }
 

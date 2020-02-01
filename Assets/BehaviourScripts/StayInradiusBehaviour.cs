@@ -8,7 +8,7 @@ public class StayInradiusBehaviour : FlockBehaviour
     public Vector3 center;
     public float radius = 15f;
 
-    public override Vector3 CalcualteMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
         Vector3 centerOffset = center - agent.transform.position;
         float t = centerOffset.magnitude / radius;

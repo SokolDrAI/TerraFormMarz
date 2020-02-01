@@ -10,7 +10,7 @@ public class SteeredCohessionBehaviour : FilteredFlockBehaviour {
     Vector3 currentVelocity;
     public float agentSmoothTime = 0.5f;
 
-    public override Vector3 CalcualteMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
         //If no neighbours, return no adjustment
         if (context.Count == 0)
@@ -20,8 +20,8 @@ public class SteeredCohessionBehaviour : FilteredFlockBehaviour {
 
         //Add all points together and average
         Vector3 cohesionMove = Vector3.zero;
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
-        foreach (Transform item in context)
+        List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+        foreach (TransformAgent item in context)
         {
             cohesionMove += item.transform.position;
         }

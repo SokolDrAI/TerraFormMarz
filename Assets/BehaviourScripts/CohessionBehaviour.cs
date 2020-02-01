@@ -6,7 +6,7 @@ using UnityEngine;
 public class CohessionBehaviour : FlockBehaviour {
 
 
-    public override Vector3 CalcualteMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
         //If no neighbours, return no adjustment
         if(context.Count == 0)
@@ -17,7 +17,7 @@ public class CohessionBehaviour : FlockBehaviour {
         //Add all points together and average
         Vector3 cohesionMove = Vector3.zero;
 
-        foreach (Transform item in context)
+        foreach (TransformAgent item in context)
         {
             cohesionMove += item.transform.position;
         }

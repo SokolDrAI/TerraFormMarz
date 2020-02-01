@@ -6,6 +6,8 @@ public class Flock : MonoBehaviour {
 
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
+
+    static Dictionary<int, TransformAgent> agentCache = new Dictionary<int, TransformAgent>();
     public FlockBehaviour behaviour;
 
     [Range(10, 500)]
@@ -53,7 +55,7 @@ public class Flock : MonoBehaviour {
     {
 	    foreach(FlockAgent agent in agents)
         {
-            List<Transform> context = GetNearbyObjects(agent);
+            List<TransformAgent> context = GetNearbyObjects(agent);
             Vector3 move = behaviour.CalcualteMove(agent, context, this);
 
             move *= driveFactor;
@@ -73,16 +75,20 @@ public class Flock : MonoBehaviour {
         return pos;
     }
 
-    List<Transform> GetNearbyObjects(FlockAgent agent)
+    List<TransformAgent> GetNearbyObjects(FlockAgent agent)
     {
-        List<Transform> context = new List<Transform>();
+        List<TransformAgent> context = new List<TransformAgent>();
         Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadious);
 
         foreach(Collider c in contextColliders)
         {
             if(c != agent.AgentCollider)
             {
-                context.Add(c.transform);
+                if(!agentCache.ContainsKey(c.GetInstanceID()))
+                {
+                    agentCache[c.GetInstanceID()] = new TransformAgent() { transform = c.transform, agent = c.GetComponent<FlockAgent>() };
+                }
+                context.Add(agentCache[c.GetInstanceID()]);
             }
         }
         return context;

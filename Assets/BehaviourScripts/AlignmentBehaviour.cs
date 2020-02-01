@@ -6,7 +6,7 @@ using UnityEngine;
 public class AlignmentBehaviour : FilteredFlockBehaviour
 {
 
-    public override Vector3 CalcualteMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
         //If no neighbours, maintaine current heading
         if (context.Count == 0)
@@ -16,8 +16,8 @@ public class AlignmentBehaviour : FilteredFlockBehaviour
 
         //Add all points together and average
         Vector3 alignmentMove = Vector3.zero;
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
-        foreach (Transform item in context)
+        List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+        foreach (TransformAgent item in context)
         {
             alignmentMove += (Vector3)item.transform.forward;
         }
