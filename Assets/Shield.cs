@@ -5,11 +5,11 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     public float health { get; private set; }
-
+    public Tower chargeTower;
     // Start is called before the first frame update
     void Start()
     {
-        health = 1;   
+        health = chargeTower == null? 1 : .3f;   
     }
 
     public void Damage(float amount)
@@ -19,6 +19,10 @@ public class Shield : MonoBehaviour
 
     void Update()
     {
+        if(chargeTower != null && chargeTower.repairValue > 0.5f)
+        {
+            health += Time.deltaTime * chargeTower.repairValue * .05f;
+        }
         Gradient gradient = new Gradient();
         GradientColorKey r = new GradientColorKey(Color.red, 0);
         GradientColorKey y = new GradientColorKey(Color.yellow, .5f);

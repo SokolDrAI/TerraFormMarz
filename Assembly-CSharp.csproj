@@ -72,6 +72,7 @@
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\FilterScriptrs\SameFlockFilter.cs" />
     <Compile Include="Assets\FilterScriptrs\TagFilter.cs" />
+    <Compile Include="Assets\FireBeam.cs" />
     <Compile Include="Assets\MarsPlayer.cs" />
     <Compile Include="Assets\Rewired\Examples\ControlRemapping1\Scripts\ControlRemappingDemo1.cs" />
     <Compile Include="Assets\Rewired\Examples\CustomControllersTilt\Scripts\CustomControllersTiltDemo.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Shield.cs" />
     <Compile Include="Assets\Tower.cs" />
     <Compile Include="Assets\TransformAgent.cs" />
+    <Compile Include="Assets\TurretAmmo.cs" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\ReadMe.txt" />

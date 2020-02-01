@@ -54,7 +54,26 @@ public class Flock : MonoBehaviour {
             agents.Add(newAgent);
         }
 	}
+
+    public void KillAgent(FlockAgent agent)
+    {
+        agents.Remove(agent);
+        Destroy(agent.gameObject);
+    }
 	
+    public FlockAgent GetAgentInRange(Vector3 origin, float range)
+    {
+        float rangesq = range * range;
+        foreach(FlockAgent agent in agents)
+        {
+            if((agent.transform.position - origin).sqrMagnitude <= rangesq)
+            {
+                return agent;
+            }
+        }
+        return null;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
