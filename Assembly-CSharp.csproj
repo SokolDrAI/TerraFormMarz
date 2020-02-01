@@ -66,6 +66,7 @@
     <Compile Include="Assets\BehaviourScripts\AvoidanceBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\CohessionBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\CompositBehaviour.cs" />
+    <Compile Include="Assets\BehaviourScripts\Scatter.cs" />
     <Compile Include="Assets\BehaviourScripts\StayInradiusBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\SteeredCohessionBehaviour.cs" />
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />

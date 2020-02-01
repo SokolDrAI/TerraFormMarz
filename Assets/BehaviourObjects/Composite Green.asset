@@ -17,7 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9e2beb1b5c6130468fdf6dc6057f065, type: 2}
   - {fileID: 11400000, guid: 1893b88c879370642bef64b858f92c49, type: 2}
   - {fileID: 11400000, guid: ecaa08d6c4a2280408b859d950b5260a, type: 2}
-  - {fileID: 11400000, guid: 87618efe4929b344697f72951416378a, type: 2}
   - {fileID: 11400000, guid: b4ac26a3d90cd294291bd7a0888ddd8e, type: 2}
   weights:
   - 10
@@ -25,5 +24,4 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  - 2
   setFloat: 10
