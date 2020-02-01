@@ -30,7 +30,7 @@ public class Flock : MonoBehaviour {
     
     
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadious * neighbourRadious;

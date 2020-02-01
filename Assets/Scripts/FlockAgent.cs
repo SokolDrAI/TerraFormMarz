@@ -12,7 +12,7 @@ public class FlockAgent : MonoBehaviour {
     public Collider AgentCollider { get { return agentCollider; } }
 
 
-
+    public Vector3 steerVelocity = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
