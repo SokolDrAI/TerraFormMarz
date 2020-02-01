@@ -10,6 +10,9 @@ public class Flock : MonoBehaviour {
     static Dictionary<int, TransformAgent> agentCache = new Dictionary<int, TransformAgent>();
     public FlockBehaviour behaviour;
 
+    public Vector3 targetPosition;
+    public float targetRadius = 25;
+
     [Range(10, 500)]
     public int startingCount = 250;
     const float AgentDensity = 0.08f;

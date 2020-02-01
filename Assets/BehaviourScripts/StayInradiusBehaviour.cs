@@ -10,8 +10,8 @@ public class StayInradiusBehaviour : FlockBehaviour
 
     public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
-        Vector3 centerOffset = center - agent.transform.position;
-        float t = centerOffset.magnitude / radius;
+        Vector3 centerOffset = flock.targetPosition - agent.transform.position;
+        float t = centerOffset.magnitude / flock.targetRadius;
 
         if(t < 0.9f)
         {
