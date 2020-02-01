@@ -40,7 +40,7 @@ public class MarsPlayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = new Vector3( player.GetAxis("Horizontal"),0, player.GetAxis("Vertical"));
-        _rigidbody.velocity = direction * 20;
+        _rigidbody.velocity = direction * 40;
 
         if(player.GetButton("Interact") && currentTower != null)
         {
