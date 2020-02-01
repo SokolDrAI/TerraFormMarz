@@ -11,13 +11,15 @@ public class FlockAgent : MonoBehaviour {
     Collider agentCollider;
     public Collider AgentCollider { get { return agentCollider; } }
 
-
     public Vector3 steerVelocity = Vector3.zero;
+    public LayerMask agentLayer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         agentCollider = GetComponent<Collider>();
-	}
+        agentLayer = this.gameObject.layer;
+
+    }
 
     public void Initialize(Flock flock)
     {

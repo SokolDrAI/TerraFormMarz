@@ -24,7 +24,7 @@ public class AvoidanceBehaviour : FilteredFlockBehaviour
             if(Vector3.SqrMagnitude(item.transform.position - agent.transform.position) < flock.SquareAvoidanceRadius)
             {
                 nAvoid++;
-                avoidanecMove += agent.transform.position - item.transform.position;
+                avoidanecMove += (agent.transform.position - item.transform.position )* 5;
             }
         }
 
