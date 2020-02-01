@@ -68,6 +68,7 @@
     <Compile Include="Assets\BehaviourScripts\CompositBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\StayInradiusBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\SteeredCohessionBehaviour.cs" />
+    <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\FilterScriptrs\SameFlockFilter.cs" />
     <Compile Include="Assets\FilterScriptrs\TagFilter.cs" />
     <Compile Include="Assets\MarsPlayer.cs" />
@@ -106,10 +107,16 @@
     <Compile Include="Assets\Scripts\Flock.cs" />
     <Compile Include="Assets\Scripts\FlockAgent.cs" />
     <Compile Include="Assets\Scripts\FlockBehaviour.cs" />
+    <Compile Include="Assets\Tower.cs" />
     <Compile Include="Assets\TransformAgent.cs" />
+    <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
     <None Include="Assets\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -166,6 +173,18 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

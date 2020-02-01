@@ -136,6 +136,18 @@
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/vetha/Documents/TerraFormMarz/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
