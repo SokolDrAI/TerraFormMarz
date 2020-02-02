@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Flock.cs" />
     <Compile Include="Assets\Scripts\FlockAgent.cs" />
     <Compile Include="Assets\Scripts\FlockBehaviour.cs" />
+    <Compile Include="Assets\Scripts\FlockSpawnManager.cs" />
     <Compile Include="Assets\Scripts\SpaceshipTargeting.cs" />
     <Compile Include="Assets\Scripts\TargetingSystem.cs" />
     <Compile Include="Assets\Shield.cs" />
