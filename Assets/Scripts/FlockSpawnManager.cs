@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlockSpawnManager : MonoBehaviour
 {
+    //list of possible targets to go to
+    public Transform[] possibleTargetsToMovetoo;
 
     //Flock count
     public int numberOfFlocks;
@@ -17,6 +19,8 @@ public class FlockSpawnManager : MonoBehaviour
 
     //number of ships to spawn
     public int numberOfShipsToSpawn;
+
+    public float spawnTimer = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +38,16 @@ public class FlockSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        spawnTimer -= Time.deltaTime;
+
+        if (spawnTimer < 0 )
         {
+            changeTarget();
+            Debug.Log("Im spawning ships");
             CountShips();
+            minShipCount -= 5;
+            numberOfShipsToSpawn += 5;
+            spawnTimer = 10;
         }
     }
 
@@ -54,7 +65,17 @@ public class FlockSpawnManager : MonoBehaviour
             }
             Debug.Log(howManyShipsInFlock[i]);
         }
-        minShipCount -= 5;
-        numberOfShipsToSpawn += 5;
+    }
+
+    public void changeTarget()
+    {
+        int SelectrandomTarget = Random.Range(0, possibleTargetsToMovetoo.Length);
+        for (int i = 0; i < possibleTargetsToMovetoo.Length; i++)
+        {
+            if(SelectrandomTarget == i)
+            {
+                ourFlocks[1].targetPosition = possibleTargetsToMovetoo[i].transform.position;
+            }
+        }
     }
 }
