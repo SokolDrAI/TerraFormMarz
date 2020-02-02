@@ -2,18 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shield : MonoBehaviour
 {
     public float health { get; private set; }
     public TurretAmmo ammoTower;
     Renderer r;
+    public Image part1;
+    public Image part2;
+    public Image part3;
+    public Image part4;
+    bool[] winCheck = new bool[4];
     // Start is called before the first frame update
     void Start()
     {
         ammoTower = GetComponentInChildren<TurretAmmo>();
         health = 1;
         r = GetComponent<Renderer>();
+
+        if(part1 != null)
+        {
+            part1.color = new Color(1,1,1,.2f);
+            part2.color = new Color(1, 1, 1, .2f);
+            part3.color = new Color(1, 1, 1, .2f);
+            part4.color = new Color(1, 1, 1, .2f);
+        }
     }
 
     public void Damage(float amount)
@@ -40,6 +54,30 @@ public class Shield : MonoBehaviour
 
     internal void Equip(Buildable.ObjectType objectType)
     {
+        switch(objectType)
+        {
+            case Buildable.ObjectType.Part1:
+                part1.color = Color.white;
+                winCheck[0] = true;
+                break;
+            case Buildable.ObjectType.Part2:
+                part2.color = Color.white;
+                winCheck[1] = true;
+                break;
+            case Buildable.ObjectType.Part3:
+                part3.color = Color.white;
+                winCheck[2] = true;
+                break;
+            case Buildable.ObjectType.Part4:
+                part4.color = Color.white;
+                winCheck[3] = true;
+                break;
+        }
+
+        if(Array.TrueForAll(winCheck,t=>t))
+        {
+            //TODO: WIN CONDITION
+        }
         //TODO: this logic
     }
 }
