@@ -12,6 +12,9 @@ public class TurretAmmo : MonoBehaviour
     Flock[] flocks;
     float range = 100;
 
+
+    public Transform fireTarget;
+    public Vector3 firePoint;
     float fireRate = 1.2f;
     float fireTimer = 0;
 
@@ -23,6 +26,14 @@ public class TurretAmmo : MonoBehaviour
     {
         flocks = FindObjectsOfType<Flock>();
         fireBeams = GetComponentsInChildren<FireBeam>();
+        if(fireTarget == null)
+        {
+            firePoint = transform.position + Vector3.up * 0.5f * transform.lossyScale.y;
+        }
+        else
+        {
+            firePoint = fireTarget.position;
+        }
     }
 
     void Fire()
@@ -46,7 +57,7 @@ public class TurretAmmo : MonoBehaviour
                     fired = true;
                     currentAmmo--;
                 }
-                fireBeams[i].Fire(transform.position + Vector3.up * 0.5f * transform.lossyScale.y, target.transform.position);
+                fireBeams[i].Fire(firePoint, target.transform.position);
                 flocks[flockIndex].KillAgent(target);
                 
                 break;
