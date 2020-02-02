@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class MarsPlayer : MonoBehaviour
 {
@@ -146,7 +147,12 @@ public class MarsPlayer : MonoBehaviour
 
     private void Update()
     {
-        if(resourceTarget != null)
+        if(Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        }
+        if (resourceTarget != null)
         {
             resourceFilledAmount = Mathf.Clamp01(Time.deltaTime / 2 + resourceFilledAmount);
         }

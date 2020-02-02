@@ -239,7 +239,7 @@ Transform:
   - {fileID: 1602386263}
   - {fileID: 1863980119}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &21261719
 MonoBehaviour:
@@ -1830,6 +1830,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 243159714}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &281917982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281917984}
+  - component: {fileID: 281917983}
+  m_Layer: 0
+  m_Name: Flock Green (1)
+  m_TagString: Flock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &281917983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281917982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a601a3eef7ed240b205d1529eb343c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 114064243921713466, guid: dddf23f39c5b694419d36e2ab400f64a,
+    type: 3}
+  agents: []
+  behaviour: {fileID: 11400000, guid: 376cb7ab07463e540b028fae3e07ea2c, type: 2}
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetRadius: 25
+  agentCount: 0
+  startingCount: 15
+  driveFactor: 10
+  maxSpeed: 52
+  neighbourRadious: 10
+  avoidanceRadiusMultiplier: 0.5
+  isScattering: 0
+  scatterTimer: 2
+--- !u!4 &281917984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281917982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282840810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,7 +2159,7 @@ Transform:
   - {fileID: 381195610}
   - {fileID: 869817604}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &337612397
 MonoBehaviour:
@@ -2497,7 +2554,7 @@ Transform:
   m_Children:
   - {fileID: 565109552}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &425181191
 Rigidbody:
@@ -7454,7 +7511,7 @@ Transform:
   m_LocalScale: {x: 4.3412, y: 15.698214, z: 4.3412}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &565109552 stripped
 Transform:
@@ -7777,7 +7834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &852581172
 MonoBehaviour:
@@ -8557,7 +8614,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &869817604 stripped
 Transform:
@@ -8935,7 +8992,7 @@ Transform:
   - {fileID: 1987644502}
   - {fileID: 1712593606}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1032632123
 PrefabInstance:
@@ -9442,7 +9499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1114108281
 PrefabInstance:
@@ -10229,10 +10286,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 114449586858131262, guid: ca0aacd5a1409c445ae998e74ee531e6,
     type: 3}
+  agents: []
   behaviour: {fileID: 11400000, guid: 376cb7ab07463e540b028fae3e07ea2c, type: 2}
   targetPosition: {x: 0, y: 0, z: 0}
   targetRadius: 25
-  startingCount: 50
+  agentCount: 0
+  startingCount: 15
   driveFactor: 10
   maxSpeed: 52
   neighbourRadious: 10
@@ -10358,10 +10417,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb9a428c380cce439e7fe799ca63730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleTargetsToMovetoo:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   numberOfFlocks: 0
   ourFlocks: []
-  howManyShipsInFlock: 0
-  maxShipCount: 0
+  howManyShipsInFlock: 
   minShipCount: 0
   numberOfShipsToSpawn: 0
 --- !u!4 &1389519462
@@ -10376,7 +10439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1403722215
 GameObject:
@@ -10410,10 +10473,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 114064243921713466, guid: 7018effa599ec5e4dbc97453e863598d,
     type: 3}
+  agents: []
   behaviour: {fileID: 11400000, guid: 376cb7ab07463e540b028fae3e07ea2c, type: 2}
   targetPosition: {x: 0, y: 0, z: 0}
   targetRadius: 25
-  startingCount: 50
+  agentCount: 0
+  startingCount: 15
   driveFactor: 10
   maxSpeed: 52
   neighbourRadious: 12
@@ -10620,7 +10685,7 @@ RectTransform:
   - {fileID: 2005318110}
   - {fileID: 1191222947}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11316,7 +11381,7 @@ Transform:
   m_LocalScale: {x: 15, y: 1, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862900003
 GameObject:
@@ -11397,7 +11462,7 @@ Transform:
   - {fileID: 371683388}
   - {fileID: 2026893048}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1863980119 stripped
 Transform:
@@ -16841,7 +16906,7 @@ Transform:
   m_LocalScale: {x: 4.3412, y: 15.698214, z: 4.3412}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2073480952
 PrefabInstance:
@@ -17013,7 +17078,7 @@ Transform:
   m_LocalScale: {x: 4.3412, y: 15.698214, z: 4.3412}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2084398880
 SphereCollider:

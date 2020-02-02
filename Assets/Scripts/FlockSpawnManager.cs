@@ -20,12 +20,16 @@ public class FlockSpawnManager : MonoBehaviour
     //number of ships to spawn
     public int numberOfShipsToSpawn;
 
-    public float spawnTimer = 10;
+    float spawnTimer = spawnRate;
+    const float spawnRate = 1;
+
+    float bigWaveTimer = 0;
+    const float bigWaveRate = 4;
 
     // Start is called before the first frame update
     void Start()
     {
-        numberOfShipsToSpawn = 5;
+        numberOfShipsToSpawn = 3;
         minShipCount = 45;
         //Get a count of each of flocks in scene
         numberOfFlocks = GameObject.FindGameObjectsWithTag("Flock").Length;
@@ -33,49 +37,57 @@ public class FlockSpawnManager : MonoBehaviour
         //Get the object with flock on it add to list
         ourFlocks = new List<Flock>(FindObjectsOfType<Flock>());
         howManyShipsInFlock = new int[numberOfFlocks];
+        changeTarget();
     }
 
     // Update is called once per frame
     void Update()
     {
         spawnTimer -= Time.deltaTime;
-
+        bigWaveTimer += Time.deltaTime;
         if (spawnTimer < 0 )
         {
-            changeTarget();
-            Debug.Log("Im spawning ships");
+            
             CountShips();
-            minShipCount -= 5;
-            numberOfShipsToSpawn += 5;
-            spawnTimer = 10;
+            spawnTimer = spawnRate;
         }
     }
 
     public void CountShips()
     {
+        float amountToSpawn =  numberOfShipsToSpawn;
+        if(bigWaveTimer > bigWaveRate)
+        {
+            bigWaveTimer -= bigWaveRate;
+            amountToSpawn *= 3;
+            changeTarget();
+        }
         for (int i = 0; i < ourFlocks.Count; i++)
         { 
             howManyShipsInFlock[i] = (ourFlocks[i].agents.Count);
-            if(howManyShipsInFlock[i] < minShipCount)
+
+            for (int z = 0; z < amountToSpawn; z++)
             {
-                for (int z = 0; z < numberOfShipsToSpawn; z++)
-                {
-                    ourFlocks[i].CreateNewShips();
-                }
+                ourFlocks[i].CreateNewShips();
             }
-            Debug.Log(howManyShipsInFlock[i]);
+            
         }
     }
 
     public void changeTarget()
     {
-        int SelectrandomTarget = Random.Range(0, possibleTargetsToMovetoo.Length);
-        for (int i = 0; i < possibleTargetsToMovetoo.Length; i++)
+        
+        foreach(var flock in ourFlocks)
         {
-            if(SelectrandomTarget == i)
+            int SelectrandomTarget = Random.Range(0, possibleTargetsToMovetoo.Length);
+            for (int i = 0; i < possibleTargetsToMovetoo.Length; i++)
             {
-                ourFlocks[1].targetPosition = possibleTargetsToMovetoo[i].transform.position;
+                if (SelectrandomTarget == i)
+                {
+                    flock.targetPosition = possibleTargetsToMovetoo[i].transform.position;
+                }
             }
         }
+
     }
 }

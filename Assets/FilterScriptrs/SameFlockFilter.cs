@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Filter/SameFlock")]
 public class SameFlockFilter : ContextFilter
 {
+    static List<TransformAgent> filtered = new List<TransformAgent>();
     public override List<TransformAgent> Filter(FlockAgent agent, List<TransformAgent> original)
     {
-        List<TransformAgent> filtered = new List<TransformAgent>();
+        filtered.Clear();
 
         foreach (TransformAgent item in original)
         {

@@ -117,7 +117,7 @@ public class Flock : MonoBehaviour {
         FlockAgent newAgent = Instantiate(
         agentPrefab,
         FindPos(),
-        Quaternion.Euler(Vector3.forward * Random.Range(0, 360f)),
+        Quaternion.Euler(Vector3.forward * Random.Range(300, 360f)),
         transform
         );
         newAgent.name = "Agent";
@@ -127,9 +127,9 @@ public class Flock : MonoBehaviour {
 
     public Vector3 FindPos()
     {
-        Vector3 pos = Random.insideUnitCircle;
+        Vector3 pos = Random.insideUnitCircle ;
         pos = new Vector3(pos.x, 0, pos.y); // Lay the circle down flat on the ground
-        pos = pos.normalized * (AgentDensity + pos.magnitude * (startingCount - AgentDensity));
+        pos = pos.normalized * (AgentDensity + (pos.magnitude + 3) * (startingCount - AgentDensity));
         return pos*2;
     }
 
@@ -154,7 +154,7 @@ public class Flock : MonoBehaviour {
             {
                 if(!agentCache.ContainsKey(c.GetInstanceID()))
                 {
-                    agentCache[c.GetInstanceID()] = new TransformAgent() { transform = c.transform, agent = c.GetComponent<FlockAgent>() };
+                    agentCache[c.GetInstanceID()] = new TransformAgent() { transform = c.transform, agent = c.GetComponent<FlockAgent>(), tag = c.tag };
                 }
                 context.Add(agentCache[c.GetInstanceID()]);
             }
