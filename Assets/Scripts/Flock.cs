@@ -5,13 +5,14 @@ using UnityEngine;
 public class Flock : MonoBehaviour {
 
     public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    public List<FlockAgent> agents = new List<FlockAgent>();
 
     static Dictionary<int, TransformAgent> agentCache = new Dictionary<int, TransformAgent>();
     public FlockBehaviour behaviour;
 
     public Vector3 targetPosition;
     public float targetRadius = 25;
+    public int agentCount;
 
     [Range(10, 500)]
     public int startingCount = 250;
@@ -100,13 +101,11 @@ public class Flock : MonoBehaviour {
 
         if (isScattering)
         {
-            Debug.Log("Isgoing");
             scatterTimer -= Time.deltaTime;
             if (scatterTimer < 0)
             {
                 isScattering = false;
                 scatterTimer = scatter_length;
-                Debug.Log("ShouldStop");
             }
         }
 
@@ -131,8 +130,18 @@ public class Flock : MonoBehaviour {
         Vector3 pos = Random.insideUnitCircle;
         pos = new Vector3(pos.x, 0, pos.y); // Lay the circle down flat on the ground
         pos = pos.normalized * (AgentDensity + pos.magnitude * (startingCount - AgentDensity));
-        return pos;
+        return pos*2;
     }
+
+    public int flockCount()
+    {
+        foreach (FlockAgent myagent in agents)
+        {
+            agentCount++;
+        }
+        return agentCount;
+    }
+
 
     List<TransformAgent> GetNearbyObjects(FlockAgent agent)
     {
