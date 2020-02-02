@@ -32,7 +32,8 @@ public class Flock : MonoBehaviour {
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
     public bool isScattering = false;
-    public float scatterTimer = 2f;
+    public float scatterTimer = 0.02f;
+    public float scatterCoolDown = 5f;
     
     // Use this for initialization
     void Awake ()
@@ -82,8 +83,10 @@ public class Flock : MonoBehaviour {
             }
             agent.MoveMe(move);
         }
-        if (isScattering)
+        scatterCoolDown -= Time.deltaTime;
+        if (isScattering && scatterCoolDown < 0)
         {
+            scatterCoolDown = 5f;
             scatterTimer -= Time.deltaTime;
             if (scatterTimer < 0)
             {
@@ -91,7 +94,6 @@ public class Flock : MonoBehaviour {
                 scatterTimer = 2f;
             }
         }
-
 
     }
 
