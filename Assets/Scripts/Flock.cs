@@ -100,13 +100,11 @@ public class Flock : MonoBehaviour {
 
         if (isScattering)
         {
-            Debug.Log("Isgoing");
             scatterTimer -= Time.deltaTime;
             if (scatterTimer < 0)
             {
                 isScattering = false;
                 scatterTimer = scatter_length;
-                Debug.Log("ShouldStop");
             }
         }
 

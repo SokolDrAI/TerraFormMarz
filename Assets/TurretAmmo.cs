@@ -7,7 +7,7 @@ public class TurretAmmo : MonoBehaviour
     const float maxHeight = 0f;
     const float minHeight = -1.58f;
     const int maxAmmo = 40;
-    int currentAmmo = 20;
+    int currentAmmo = 5;
     float increment = (maxHeight- minHeight) / (float)maxAmmo;
     Flock[] flocks;
     float range = 30;

@@ -12,7 +12,7 @@ public class MarsPlayer : MonoBehaviour
     private GameObject car;
     Tower currentTower;
     ResourceCollection resourceTarget;
-
+    public CanvasGroup buttonGroup;
 
     public Buildable[] buildables;
     float resourceFilledAmount = 0;
@@ -40,7 +40,17 @@ public class MarsPlayer : MonoBehaviour
             currentBuildable.transform.localPosition = Vector3.up * 2;
             currentBuildable.transform.localScale = Vector3.one * 0.5f;
         }
-        
+
+
+        if (resourceFilledAmount != 0)
+        {
+            Tower tower = collision.gameObject.GetComponent<Tower>();
+            if (tower != null)
+            {
+                tower.Boost(resourceFilledAmount);
+                resourceFilledAmount = 0;
+            }
+        }
 
         if(currentBuildable != null && currentBuildable.objectType == Buildable.ObjectType.Ammo)
         {
@@ -100,19 +110,18 @@ public class MarsPlayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = new Vector3( player.GetAxis("Horizontal"),0, player.GetAxis("Vertical"));
-        Vector3 BackDirection = new Vector3(player.GetAxis("Horizontal"), 0, player.GetAxis("Vertical")*-1);
+        //Vector3 BackDirection = new Vector3(player.GetAxis("Horizontal"), 0, player.GetAxis("Vertical")*-1);
         _rigidbody.velocity = direction * 50;
 
-        car.transform.LookAt(BackDirection);
+        //transform.LookAt(transform.position + direction);
+        if (direction.sqrMagnitude > 0)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), Time.fixedDeltaTime * 500); ;
+        }
 
         if (currentTower != null)
         {
-            if (player.GetButton("Interact"))
-            {
-                currentTower.Boost(resourceFilledAmount);
-                resourceFilledAmount = 0;
-            }
-            else if (player.GetButton("Build0"))
+            if (player.GetButton("Build0"))
             {
                 currentTower.Enqueue(buildables[0]);
             }
@@ -143,8 +152,8 @@ public class MarsPlayer : MonoBehaviour
         }
         Color color = Color.Lerp(Color.gray, Color.green, resourceFilledAmount);
         GetComponent<Renderer>().material.color = color;
-       
 
+        buttonGroup.alpha = (currentTower != null && !currentTower.isBuilding) ? 0.7f : 0;
         lineRenderer.enabled = (currentTower != null) || (resourceTarget != null);
         if(lineRenderer.enabled)
         {

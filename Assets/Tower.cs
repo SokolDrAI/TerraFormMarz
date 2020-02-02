@@ -5,7 +5,7 @@ using System;
 public class Tower : MonoBehaviour
 {
     public float buildValue { get; private set; }
-    bool isBuilding = false;
+    public bool isBuilding { get; private set; }
     float boostTime = 0;
     Buildable objectToBuild;
     ParticleSystem particles;
@@ -33,7 +33,7 @@ public class Tower : MonoBehaviour
         {
             if(boostTime > 0)
             {
-                boostTime = Mathf.Clamp01(boostTime - Time.deltaTime);
+                boostTime = Mathf.Clamp01(boostTime - Time.deltaTime/3);
                 buildValue += Time.deltaTime * 2;
             }
             else
