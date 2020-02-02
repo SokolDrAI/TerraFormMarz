@@ -22,7 +22,7 @@ public class MarsPlayer : MonoBehaviour
         player = ReInput.players.GetPlayer(0);
         _rigidbody = GetComponent<Rigidbody>();
         lineRenderer = GetComponent<LineRenderer>();
-        car = GameObject.FindGameObjectWithTag("Car");
+        car = transform.GetChild(0).gameObject;
     }
 
     private void OnCollisionEnter(Collision collision)
