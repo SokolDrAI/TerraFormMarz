@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4810602931117114}
   - component: {fileID: 114064243921713466}
-  - component: {fileID: 2408300986992881068}
   - component: {fileID: 8818480418150376536}
   - component: {fileID: 5752540184667141655}
   m_Layer: 0
@@ -131,19 +130,6 @@ MonoBehaviour:
   agentLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!135 &2408300986992881068
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901613738179718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!120 &8818480418150376536
 LineRenderer:
   m_ObjectHideFlags: 0

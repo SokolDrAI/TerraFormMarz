@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4225167575437014}
   - component: {fileID: 114449586858131262}
-  - component: {fileID: 7590220055057769356}
   m_Layer: 0
   m_Name: FlockAgent Green
   m_TagString: Untagged
@@ -124,16 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500e64cba9e317e438d1b496ac923a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &7590220055057769356
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252941094732264}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.37
-  m_Center: {x: 0, y: 0, z: 0}
+  scatterCheck: 0
+  steerVelocity: {x: 0, y: 0, z: 0}
+  agentLayer:
+    serializedVersion: 2
+    m_Bits: 0
