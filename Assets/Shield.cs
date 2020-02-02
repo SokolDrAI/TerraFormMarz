@@ -13,6 +13,7 @@ public class Shield : MonoBehaviour
     public Image part2;
     public Image part3;
     public Image part4;
+    public Text victoryText;
     bool[] winCheck = new bool[4];
     // Start is called before the first frame update
     void Start()
@@ -27,12 +28,20 @@ public class Shield : MonoBehaviour
             part2.color = new Color(1, 1, 1, .2f);
             part3.color = new Color(1, 1, 1, .2f);
             part4.color = new Color(1, 1, 1, .2f);
+            victoryText.color = Color.clear;
+
         }
     }
 
     public void Damage(float amount)
     {
         health -= amount;
+        if (health <= 0)
+        {
+            victoryText.color = Color.red;
+            victoryText.text = "YOU DIED!";
+            Destroy(this.gameObject);
+        }
     }
 
     void Update()
@@ -76,7 +85,8 @@ public class Shield : MonoBehaviour
 
         if(Array.TrueForAll(winCheck,t=>t))
         {
-            //TODO: WIN CONDITION
+            victoryText.color = Color.white;
+            victoryText.text = "A Winner Is You!";
         }
         //TODO: this logic
     }

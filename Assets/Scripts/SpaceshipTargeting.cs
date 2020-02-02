@@ -10,7 +10,7 @@ public class SpaceshipTargeting : MonoBehaviour
     public List<Shield> tower;// list of towers
     public List<Transform> towertransforms;
     public Transform target;
-
+    float damageAmount = 0.0015f;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -28,11 +28,17 @@ public class SpaceshipTargeting : MonoBehaviour
         target = GetClosestEnemy(towertransforms);
         //where tower damage should be
         lineRenderer.enabled = target != null;
-        if (lineRenderer.enabled)
+        if (target != null)
         {
+            Shield s = target.GetComponent<Shield>();
+            if (s != null)
+                s.Damage(damageAmount * Time.deltaTime);
+
+
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, GetClosestEnemy(towertransforms).transform.position);
+            lineRenderer.SetPosition(1, target.transform.position);
+            
         }
     }
 

@@ -6,6 +6,7 @@ public class FireBeam : MonoBehaviour
 {
     LineRenderer lineRenderer;
     float fadeTime = 0;
+    const float fadeLength = 0.15f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class FireBeam : MonoBehaviour
 
     public void Fire(Vector3 startPos, Vector3 endPos)
     {
-        fadeTime = 1;
+        fadeTime = fadeLength;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
     }
@@ -29,9 +30,13 @@ public class FireBeam : MonoBehaviour
         if(fadeTime > 0)
         {
             fadeTime =Mathf.Clamp01(fadeTime- Time.deltaTime);
-            lineRenderer.startColor = new Color(1, 0, 0, fadeTime);
-            lineRenderer.endColor = new Color(1, 0, 0, fadeTime);
+            lineRenderer.startColor = new Color(1, 0, 0, fadeTime / fadeLength);
+            lineRenderer.endColor = new Color(1, 0, 0, fadeTime / fadeLength);
         }
-        
+        else
+        {
+            lineRenderer.startColor = new Color(1, 0, 0, 0);
+            lineRenderer.endColor = new Color(1, 0, 0,0);
+        }
     }
 }
