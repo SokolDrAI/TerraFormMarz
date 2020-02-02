@@ -12,11 +12,12 @@ public class SameFlockFilter : ContextFilter
         foreach (TransformAgent item in original)
         {
             FlockAgent itemAgent = item.agent;
-            if(itemAgent != null && itemAgent.AgentFlock == agent.AgentFlock)
+            if (itemAgent != null && itemAgent.AgentFlock == agent.AgentFlock)
             {
                 filtered.Add(item);
             }
         }
+
         return filtered;
     }
 }

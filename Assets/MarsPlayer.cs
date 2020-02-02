@@ -9,6 +9,7 @@ public class MarsPlayer : MonoBehaviour
     private Buildable currentBuildable;
     private Rigidbody _rigidbody;
     private LineRenderer lineRenderer;
+    private GameObject car;
     Tower currentTower;
     ResourceCollection resourceTarget;
 
@@ -21,6 +22,7 @@ public class MarsPlayer : MonoBehaviour
         player = ReInput.players.GetPlayer(0);
         _rigidbody = GetComponent<Rigidbody>();
         lineRenderer = GetComponent<LineRenderer>();
+        car = GameObject.FindGameObjectWithTag("Car");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,7 +100,10 @@ public class MarsPlayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = new Vector3( player.GetAxis("Horizontal"),0, player.GetAxis("Vertical"));
+        Vector3 BackDirection = new Vector3(player.GetAxis("Horizontal"), 0, player.GetAxis("Vertical")*-1);
         _rigidbody.velocity = direction * 50;
+
+        car.transform.LookAt(BackDirection);
 
         if (currentTower != null)
         {

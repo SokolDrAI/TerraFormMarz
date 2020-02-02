@@ -11,15 +11,17 @@ public class Scatter : FilteredFlockBehaviour
 
     public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
+        List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+       // Debug.Log(filteredContext.Count);
 
-        if(flock.isScattering == true)
+        if (flock.isScattering == true)
         {
-            Debug.Log("I must scatter");
-            List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+            //Debug.Log("I must scatter");
 
             //If no neighbours, return no adjustment
             if (filteredContext.Count == 0)
             {
+                //Debug.Log("I must scatter==0");
                 return Vector3.zero;
             }
 

@@ -11,13 +11,7 @@ public class CompositBehaviour : FlockBehaviour
 
     public override Vector3 CalcualteMove(FlockAgent agent, List<TransformAgent> context, Flock flock)
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("FlockShouldScatter");
-            weights[0] = setFloat;
-            flock.isScattering = true;
-        }
-
+       
         //Handle data mismatch
         if (weights.Length != behaviours.Length)
         {
