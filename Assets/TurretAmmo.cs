@@ -10,7 +10,7 @@ public class TurretAmmo : MonoBehaviour
     int currentAmmo = 20;
     float increment = (maxHeight- minHeight) / (float)maxAmmo;
     Flock[] flocks;
-    float range = 100;
+    float range = 30;
 
 
     public Transform fireTarget;
@@ -47,7 +47,7 @@ public class TurretAmmo : MonoBehaviour
             {
 
                 int flockIndex = (j + randomStartIndex) % flocks.Length;
-                target = flocks[flockIndex].GetAgentInRange(transform.position, range);
+                target = flocks[flockIndex].GetAgentInRange(firePoint, range);
                 if(target == null)
                 {
                     continue;

@@ -35,8 +35,9 @@ public class Scatter : FilteredFlockBehaviour
             scatterMove /= filteredContext.Count;
             //create offset from agent position
             scatterMove += agent.transform.position;
+            
             scatterMove = Vector3.SmoothDamp(agent.transform.forward, scatterMove, ref agent.steerVelocity, agentSmoothTime);
-
+            scatterMove *= flock.scatterTimer / Flock.scatter_length;
             return scatterMove;
         }
         else

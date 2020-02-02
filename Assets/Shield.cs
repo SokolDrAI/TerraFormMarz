@@ -7,11 +7,13 @@ public class Shield : MonoBehaviour
 {
     public float health { get; private set; }
     public TurretAmmo ammoTower;
+    Renderer r;
     // Start is called before the first frame update
     void Start()
     {
         ammoTower = GetComponentInChildren<TurretAmmo>();
-        health = 1;   
+        health = 1;
+        r = GetComponent<Renderer>();
     }
 
     public void Damage(float amount)
@@ -21,6 +23,8 @@ public class Shield : MonoBehaviour
 
     void Update()
     {
+        if (this.r == null)
+            return;
         Gradient gradient = new Gradient();
         GradientColorKey r = new GradientColorKey(Color.red, 0);
         GradientColorKey y = new GradientColorKey(Color.yellow, .5f);
@@ -30,7 +34,7 @@ public class Shield : MonoBehaviour
         GradientAlphaKey[] alpha = new GradientAlphaKey[] { a };
 
         gradient.SetKeys(color, alpha);
-        GetComponent<Renderer>().material.color = gradient.Evaluate(health) ;
+        this.r.material.color = gradient.Evaluate(health) ;
 
     }
 

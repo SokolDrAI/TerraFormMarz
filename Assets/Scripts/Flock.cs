@@ -32,12 +32,21 @@ public class Flock : MonoBehaviour {
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
     public bool isScattering = false;
-    public float scatterTimer = 0.02f;
-    public float scatterCoolDown = 5f;
-    
+    public const float scatter_length = 0.4f;
+    public float scatterTimer;
+    float nextScatterTime;
     // Use this for initialization
+
+      void SetNextScatterTime()
+    {
+        float bias = 0.7f;
+        float t = Mathf.Pow(Random.value, bias);
+        nextScatterTime = Time.time + 0.5f + t * 5.0f;
+    }
     void Awake ()
     {
+        SetNextScatterTime();
+        scatterTimer = scatter_length;
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadious * neighbourRadious;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -52,7 +61,12 @@ public class Flock : MonoBehaviour {
     {
         agents.Remove(agent);
         Destroy(agent.gameObject);
-        isScattering = true;
+        
+        if (Time.time > nextScatterTime)
+        {
+            isScattering = true;
+            SetNextScatterTime();
+        }
     }
 	
     public FlockAgent GetAgentInRange(Vector3 origin, float range)
@@ -83,15 +97,16 @@ public class Flock : MonoBehaviour {
             }
             agent.MoveMe(move);
         }
-        scatterCoolDown -= Time.deltaTime;
-        if (isScattering && scatterCoolDown < 0)
+
+        if (isScattering)
         {
-            scatterCoolDown = 5f;
+            Debug.Log("Isgoing");
             scatterTimer -= Time.deltaTime;
             if (scatterTimer < 0)
             {
                 isScattering = false;
-                scatterTimer = 2f;
+                scatterTimer = scatter_length;
+                Debug.Log("ShouldStop");
             }
         }
 
