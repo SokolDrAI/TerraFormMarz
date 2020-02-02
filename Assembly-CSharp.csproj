@@ -69,6 +69,7 @@
     <Compile Include="Assets\BehaviourScripts\Scatter.cs" />
     <Compile Include="Assets\BehaviourScripts\StayInradiusBehaviour.cs" />
     <Compile Include="Assets\BehaviourScripts\SteeredCohessionBehaviour.cs" />
+    <Compile Include="Assets\Buildable.cs" />
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\FilterScriptrs\SameFlockFilter.cs" />
     <Compile Include="Assets\FilterScriptrs\TagFilter.cs" />

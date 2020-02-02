@@ -6,10 +6,8 @@ public class TurretAmmo : MonoBehaviour
 {
     const float maxHeight = 0f;
     const float minHeight = -1.58f;
-    public Tower rechargeTower;
-    private float rechargeCounter = 0;
-    const int maxAmmo = 20;
-    int currentAmmo = 10;
+    const int maxAmmo = 40;
+    int currentAmmo = 20;
     float increment = (maxHeight- minHeight) / (float)maxAmmo;
     Flock[] flocks;
     float range = 100;
@@ -17,7 +15,7 @@ public class TurretAmmo : MonoBehaviour
     float fireRate = 1.2f;
     float fireTimer = 0;
 
-    float gameplayMultiplier = 1.0f;
+    const float gameplayMultiplier = 1.0f;
 
     FireBeam[] fireBeams;
     // Start is called before the first frame update
@@ -58,6 +56,11 @@ public class TurretAmmo : MonoBehaviour
         }
     }
 
+    internal void Reload()
+    {
+        currentAmmo = maxAmmo;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -69,15 +72,6 @@ public class TurretAmmo : MonoBehaviour
             {
                 Fire();
                 fireTimer -= fireRate;
-            }
-        }
-        if(rechargeTower.repairValue > 0.5f && currentAmmo < maxAmmo)
-        {
-            rechargeCounter += Time.deltaTime * rechargeTower.repairValue * 2 * gameplayMultiplier;
-            if(rechargeCounter > 1)
-            {
-                rechargeCounter -= 1;
-                currentAmmo++;
             }
         }
     }

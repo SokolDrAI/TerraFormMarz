@@ -1,15 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
     public float health { get; private set; }
-    public Tower chargeTower;
+    public TurretAmmo ammoTower;
     // Start is called before the first frame update
     void Start()
     {
-        health = chargeTower == null? 1 : .3f;   
+        ammoTower = GetComponentInChildren<TurretAmmo>();
+        health = 1;   
     }
 
     public void Damage(float amount)
@@ -19,10 +21,6 @@ public class Shield : MonoBehaviour
 
     void Update()
     {
-        if(chargeTower != null && chargeTower.repairValue > 0.5f)
-        {
-            health += Time.deltaTime * chargeTower.repairValue * .05f;
-        }
         Gradient gradient = new Gradient();
         GradientColorKey r = new GradientColorKey(Color.red, 0);
         GradientColorKey y = new GradientColorKey(Color.yellow, .5f);
@@ -34,5 +32,10 @@ public class Shield : MonoBehaviour
         gradient.SetKeys(color, alpha);
         GetComponent<Renderer>().material.color = gradient.Evaluate(health) ;
 
+    }
+
+    internal void Equip(Buildable.ObjectType objectType)
+    {
+        //TODO: this logic
     }
 }

@@ -16,7 +16,7 @@ public class SpaceshipTargeting : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         tower = new List<Shield>(FindObjectsOfType<Shield>());
-        tower.RemoveAll(s => s.chargeTower == null);
+        tower.RemoveAll(s => s.ammoTower != null);
         for (int i = 0; i < tower.Count; i++)
         {
             towertransforms.Add(tower[i].gameObject.transform);

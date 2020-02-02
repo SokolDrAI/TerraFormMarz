@@ -6,11 +6,14 @@ using Rewired;
 public class MarsPlayer : MonoBehaviour
 {
     private Player player;
+    private Buildable currentBuildable;
     private Rigidbody _rigidbody;
     private LineRenderer lineRenderer;
     Tower currentTower;
     ResourceCollection resourceTarget;
 
+
+    public Buildable[] buildables;
     float resourceFilledAmount = 0;
     // Start is called before the first frame update
     void OnEnable()
@@ -18,6 +21,46 @@ public class MarsPlayer : MonoBehaviour
         player = ReInput.players.GetPlayer(0);
         _rigidbody = GetComponent<Rigidbody>();
         lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        Buildable buildable = collision.gameObject.GetComponent<Buildable>();
+        if (buildable != null)
+        {
+            if(currentBuildable != null)
+            {
+                Destroy(currentBuildable.gameObject);
+            }
+            currentBuildable = buildable;
+            currentBuildable.transform.parent = transform;
+            currentBuildable.transform.localPosition = Vector3.up * 2;
+            currentBuildable.transform.localScale = Vector3.one * 0.5f;
+        }
+        
+
+        if(currentBuildable != null && currentBuildable.objectType == Buildable.ObjectType.Ammo)
+        {
+            TurretAmmo ammo = collision.gameObject.GetComponentInChildren<TurretAmmo>();
+            if (ammo != null)
+            {
+                Destroy(currentBuildable.gameObject);
+                currentBuildable = null;
+                ammo.Reload();
+            }            
+        }
+        else if(currentBuildable != null)
+        {
+            Shield shield = collision.gameObject.GetComponentInChildren<Shield>();
+            if(shield != null && shield.ammoTower ==  null)
+            {
+                shield.Equip(currentBuildable.objectType);
+                Destroy(currentBuildable.gameObject);
+                currentBuildable = null;
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,13 +98,36 @@ public class MarsPlayer : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = new Vector3( player.GetAxis("Horizontal"),0, player.GetAxis("Vertical"));
-        _rigidbody.velocity = direction * 40;
+        _rigidbody.velocity = direction * 50;
 
-        if(player.GetButton("Interact") && currentTower != null)
+        if (currentTower != null)
         {
-            currentTower.Repair(Time.fixedDeltaTime * 0.2f);
+            if (player.GetButton("Interact"))
+            {
+                currentTower.Boost(resourceFilledAmount);
+                resourceFilledAmount = 0;
+            }
+            else if (player.GetButton("Build0"))
+            {
+                currentTower.Enqueue(buildables[0]);
+            }
+            else if (player.GetButton("Build1"))
+            {
+                currentTower.Enqueue(buildables[1]);
+            }
+            else if (player.GetButton("Build2"))
+            {
+                currentTower.Enqueue(buildables[2]);
+            }
+            else if (player.GetButton("Build3"))
+            {
+                currentTower.Enqueue(buildables[3]);
+            }
+            else if (player.GetButton("Build4"))
+            {
+                currentTower.Enqueue(buildables[4]);
+            }
         }
-       
     }
 
     private void Update()
@@ -74,7 +140,7 @@ public class MarsPlayer : MonoBehaviour
         GetComponent<Renderer>().material.color = color;
        
 
-        lineRenderer.enabled = (currentTower != null && currentTower.repairValue < 1) || (resourceTarget != null);
+        lineRenderer.enabled = (currentTower != null) || (resourceTarget != null);
         if(lineRenderer.enabled)
         {
             lineRenderer.positionCount = 2;
