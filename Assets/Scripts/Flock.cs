@@ -43,15 +43,7 @@ public class Flock : MonoBehaviour {
 
         for (int i = 0; i < startingCount; i++)
         {
-            FlockAgent newAgent = Instantiate(
-                agentPrefab,
-                FindPos(),
-                Quaternion.Euler(Vector3.forward * Random.Range(0,360f)),
-                transform
-                );
-            newAgent.name = "Agent" + i;
-            newAgent.Initialize(this);
-            agents.Add(newAgent);
+            CreateNewShips();
         }
 	}
 
@@ -59,6 +51,7 @@ public class Flock : MonoBehaviour {
     {
         agents.Remove(agent);
         Destroy(agent.gameObject);
+        isScattering = true;
     }
 	
     public FlockAgent GetAgentInRange(Vector3 origin, float range)
@@ -100,6 +93,20 @@ public class Flock : MonoBehaviour {
         }
 
 
+    }
+
+
+    public void CreateNewShips()
+    {
+        FlockAgent newAgent = Instantiate(
+        agentPrefab,
+        FindPos(),
+        Quaternion.Euler(Vector3.forward * Random.Range(0, 360f)),
+        transform
+        );
+        newAgent.name = "Agent";
+        newAgent.Initialize(this);
+        agents.Add(newAgent);
     }
 
     public Vector3 FindPos()

@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Part1Box Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6196355353235546195, guid: 3b51c2df48a6b7a41aaa43e1857f4c80,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4488d03a4e7ed5547a127f6692764ce3, type: 2}
     - target: {fileID: 6973642560024124870, guid: 3b51c2df48a6b7a41aaa43e1857f4c80,
         type: 3}
       propertyPath: objectType
