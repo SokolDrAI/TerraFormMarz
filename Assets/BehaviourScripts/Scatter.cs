@@ -14,7 +14,7 @@ public class Scatter : FilteredFlockBehaviour
 
         if(flock.isScattering == true)
         {
-            Debug.Log("I must scatter");
+           // Debug.Log("I must scatter");
             List<TransformAgent> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
 
             //If no neighbours, return no adjustment
